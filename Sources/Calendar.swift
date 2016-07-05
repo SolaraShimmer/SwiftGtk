@@ -13,19 +13,19 @@ public class Calendar: Widget {
     
     public var year: Int {
         get {
-            return getProperty(UnsafeMutablePointer(widgetPointer), name: "year")
+            return get(property: UnsafeMutablePointer(widgetPointer), name: "year")
         }
         set {
-            setProperty(UnsafeMutablePointer(widgetPointer), name: "year", newValue: newValue)
+            set(property: UnsafeMutablePointer(widgetPointer), name: "year", newValue: newValue)
         }
     }
     
     public var showHeading: Bool {
         get {
-            return getProperty(UnsafeMutablePointer(widgetPointer), name: "show-heading")
+            return get(property: UnsafeMutablePointer(widgetPointer), name: "show-heading")
         }
         set {
-            setProperty(UnsafeMutablePointer(widgetPointer), name: "show-heading", newValue: newValue)
+            set(property: UnsafeMutablePointer(widgetPointer), name: "show-heading", newValue: newValue)
         }
     }
 }

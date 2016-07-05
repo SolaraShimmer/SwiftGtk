@@ -14,9 +14,9 @@ public class Container: Widget {
     }
     
     public func remove(widget: Widget) {
-        if let index = widgets.indexOf({ $0 === widget }) {
+        if let index = widgets.index(where: { $0 === widget }) {
             gtk_container_remove(UnsafeMutablePointer(widgetPointer), widget.widgetPointer)
-            widgets.removeAtIndex(index)
+            widgets.remove(at: index)
             widget.parentWidget = nil
         }
     }

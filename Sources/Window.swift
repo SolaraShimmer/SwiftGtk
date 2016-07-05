@@ -26,7 +26,7 @@ public class Window: Bin {
     
     public var title: String? {
         get {
-            return String.fromCString(gtk_window_get_title(UnsafeMutablePointer(widgetPointer)))
+            return String(validatingUTF8: gtk_window_get_title(UnsafeMutablePointer(widgetPointer)))
         }
         set {
             if let title = newValue {

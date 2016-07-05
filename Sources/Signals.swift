@@ -18,14 +18,14 @@ enum ConnectFlags {
     }
 }
 
-func connectSignal<T>(instance: UnsafeMutablePointer<T>, name: String, data: UnsafePointer<Void>, connectFlags: ConnectFlags = .After, handler: GCallback) -> UInt {
+func connect<T>(signal instance: UnsafeMutablePointer<T>?, name: String, data: UnsafePointer<Void>, connectFlags: ConnectFlags = .After, handler: GCallback) -> UInt {
     return g_signal_connect_data(instance, name, handler, UnsafeMutablePointer(data), nil, connectFlags.toGConnectFlags())
 }
 
-func connectSignal<T>(instance: UnsafeMutablePointer<T>, name: String, connectFlags: ConnectFlags = .After, handler: GCallback) -> UInt {
+func connect<T>(signal instance: UnsafeMutablePointer<T>?, name: String, connectFlags: ConnectFlags = .After, handler: GCallback) -> UInt {
     return g_signal_connect_data(instance, name, handler, nil, nil, connectFlags.toGConnectFlags())
 }
 
-func disconnectSignal<T>(instance: UnsafeMutablePointer<T>, handlerId: UInt) {
+func disconnect<T>(signal instance: UnsafeMutablePointer<T>?, handlerId: UInt) {
     g_signal_handler_disconnect(instance, handlerId)
 }
